@@ -39,6 +39,10 @@ body {
   font-style: normal;
 }
 
+.close-tab:hover {
+  content: "×";
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }

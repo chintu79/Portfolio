@@ -1,17 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
+import NotesHelper from './utils/NotesHelper'
 
-const IconWrapper = ({ children, href = "#" }) => (
-  <a
-    href={href}
-    className="w-12 h-fit flex items-center justify-center hover:drop-shadow-xl transition duration-300 rounded-xl"
-  >
+const Tooltip = ({ children, label }) => (
+  <div className="group relative flex">
     {children}
-  </a>
+    <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 px-2 py-1 text-xs bg-zinc-800 text-white rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all whitespace-nowrap z-50">
+      {label}
+      <span className="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-zinc-800"></span>
+    </span>
+  </div>
+);
+
+const IconWrapper = ({ children, onClick, href = "#", tooltip }) => (
+  <Tooltip label={tooltip}>
+    <a
+      href={href}
+      onClick={(e) => {
+        if (onClick) {
+          e.preventDefault();
+          onClick();
+        }
+      }}
+      className="w-12 h-fit flex items-center justify-center hover:drop-shadow-xl transition duration-300 rounded-xl cursor-pointer"
+    >
+      {children}
+    </a>
+  </Tooltip>
 );
 
 
 
 const Navbar = () => {
+  const [isNotesOpen, setIsNotesOpen] = useState(false);
+  const [aboutTab, setAboutTab] = useState(false);
   const LinkedInIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 72 72">
       <rect width="72" height="72" rx="16.2" fill="#117EB8" />
@@ -103,8 +124,15 @@ const Navbar = () => {
       <nav>
         <div className="px-4 bg-[#4A403A40] backdrop-blur-[3px] border border-zinc-200/30 rounded-2xl shadow-sm flex justify-center items-center gap-4">
 
+          {/* About Me Image */}
+          <IconWrapper onClick={() => setAboutTab(!aboutTab)} tooltip="About me">
+            <span className="flex items-center justify-center w-12 h-20 rounded-xl overflow-hidden">
+              <img src="/about.jpeg" alt="About me" className="w-12 h-12 rounded-xl object-cover" />
+            </span>
+          </IconWrapper>
+
           {/* Notes */}
-          <IconWrapper href="">
+          <IconWrapper onClick={() => setIsNotesOpen(!isNotesOpen)} tooltip="Notes">
             <NotesIcon />
           </IconWrapper>
 
@@ -112,27 +140,34 @@ const Navbar = () => {
           <div className="w-px h-10 bg-white" />
 
           {/* LinkedIn */}
-          <IconWrapper href="https://www.linkedin.com/in/shreekrishna-chinta">
+          <IconWrapper href="https://www.linkedin.com/in/shreekrishna-chinta" tooltip="LinkedIn">
             <LinkedInIcon />
           </IconWrapper>
 
           {/* Instagram */}
-          <IconWrapper href="https://www.instagram.com/">
+          <IconWrapper href="https://www.instagram.com/" tooltip="Instagram">
             <InstagramIcon />
           </IconWrapper>
 
           {/* GitHub */}
-          <IconWrapper href="https://github.com/chintu79">
+          <IconWrapper href="https://github.com/chintu79" tooltip="GitHub">
             <GithubIcon />
           </IconWrapper>
 
           {/* LeetCode */}
-          <IconWrapper href="https://leetcode.com/krishna-singh-4b0a6b19a/">
+          <IconWrapper href="https://leetcode.com/krishna-singh-4b0a6b19a/" tooltip="LeetCode">
             <LeetcodeIcon />
           </IconWrapper>
 
         </div>
       </nav>
+
+      {/* Notes Helper Panel */}
+      {isNotesOpen && (
+        <div className="absolute bottom-full mb-4 left-1/2 -translate-x-1/2">
+          <NotesHelper onClose={() => setIsNotesOpen(false)} />
+        </div>
+      )}
     </div>
   );
 };
