@@ -14,23 +14,22 @@ const NotesHelper = () => {
         "Basic Backend Integration"]
 
     return (
-        <div className="absolute left-1/2 -translate-x-1/2 bg-[#F9F5F0] h-120 rounded-lg shadow-xl flex flex-col justify-start z-40">
+        <div className="absolute left-1/2 -translate-x-1/2 bg-[#F9F5F0] h-fit rounded-lg shadow-xl flex flex-col justify-start z-40">
             <nav className='p-2 flex items-center justify-start gap-2 border-b border-gray-300'>
                 <div className='w-3 h-3 bg-red-400 rounded-full'></div>
                 <div className='w-3 h-3 bg-yellow-400 rounded-full'></div>
                 <div className='w-3 h-3 bg-green-400 rounded-full'></div>
                 <div className='inter-normal opacity-40'>Notes</div>
             </nav>
-            <div className='flex gap-4 h-full'>
+            <div className='flex gap-4 h-100'>
                 <section className='inter-normal border-r border-gray-300 pr-4'>
-                    <div className='p-4 flex flex-col items-start gap-2'>
+                    <div className='py-4 px-8 flex flex-col items-start gap-2'>
                         <button>Experience</button>
                         <button>About me</button>
                         <button>Resume</button>
                     </div>
-
                 </section>
-                <section className='w-100 h-full p-4'>
+                <section className='w-100 h-100 p-4 overflow-y-auto'>
                     <h1 className='inter-bold text-4xl font-extra-bold mb-2'>Why me?</h1>
                     <p className='inter-normal text-[0.9rem] opacity-80'>{about}</p>
                     <h2 className='inter-bold text-2xl font-bold mt-4 mb-2'>Skills</h2>
@@ -39,6 +38,8 @@ const NotesHelper = () => {
                             <li key={index}>{skill}</li>
                         ))}
                     </ul>
+                    <h1 className='inter-bold text-2xl font-bold mt-4 mb-2'>A Small Quote</h1>
+                    <p className='inter-normal text-[0.9rem] opacity-80'>&ldquo;The only way to do great work is to love what you do.&rdquo;</p>
                 </section>
             </div>
         </div>

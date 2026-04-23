@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
-body{
+body {
   margin: 0;
-  padding: 0; 
+  padding: 0;
   box-sizing: border-box;
 }
 
@@ -37,4 +37,17 @@ body{
   font-optical-sizing: auto;
   font-weight: 600;
   font-style: normal;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #bfb6ae;
+  border-radius: 9999px;
 }

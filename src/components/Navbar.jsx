@@ -3,7 +3,7 @@ import React from "react";
 const IconWrapper = ({ children, href = "#" }) => (
   <a
     href={href}
-    className="w-12 h-fit flex items-center justify-center hover:shadow-lg transition rounded-xl shadow-sm"
+    className="w-12 h-fit flex items-center justify-center hover:drop-shadow-xl transition duration-300 rounded-xl"
   >
     {children}
   </a>
