@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
-* {
+body{
   margin: 0;
-  padding: 0;
+  padding: 0; 
   box-sizing: border-box;
 }
 
@@ -22,5 +22,19 @@
   font-family: "Space Grotesk", sans-serif;
   font-optical-sizing: auto;
   font-weight: 700;
+  font-style: normal;
+}
+
+.inter-normal {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.inter-bold {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
   font-style: normal;
 }
