@@ -11,6 +11,13 @@ body {
 
 } */
 
+.space-grotesk-light {
+  font-family: "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
 .space-grotesk-normal {
   font-family: "Space Grotesk", sans-serif;
   font-optical-sizing: auto;

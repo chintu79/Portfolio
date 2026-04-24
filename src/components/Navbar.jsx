@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import NotesHelper from './utils/NotesHelper'
+import AboutHelper from './utils/AboutHelper'
 
 const Tooltip = ({ children, label }) => (
   <div className="group relative flex">
@@ -120,14 +121,14 @@ const Navbar = () => {
   );
 
   return (
-    <div className="fixed bottom-20 left-1/2 -translate-x-1/2 z-50">
-      <nav>
+    <div className="fixed bottom-20 left-1/2 -translate-x-1/2">
+      <nav className="w-fit mx-auto z-50">
         <div className="px-4 bg-[#4A403A40] backdrop-blur-[3px] border border-zinc-200/30 rounded-2xl shadow-sm flex justify-center items-center gap-4">
 
           {/* About Me Image */}
           <IconWrapper onClick={() => setAboutTab(!aboutTab)} tooltip="About me">
             <span className="flex items-center justify-center w-12 h-20 rounded-xl overflow-hidden">
-              <img src="/about.jpeg" alt="About me" className="w-12 h-12 rounded-xl object-cover" />
+              <img src="/about.jpeg" alt="About me" className="w-13 h-13 rounded-xl" />
             </span>
           </IconWrapper>
 
@@ -164,10 +165,17 @@ const Navbar = () => {
 
       {/* Notes Helper Panel */}
       {isNotesOpen && (
-        <div className="absolute bottom-full mb-4 left-1/2 -translate-x-1/2">
+        <div className="absolute bottom-full mb-4 left-1/2 -translate-x-1/2 -z-10">
           <NotesHelper onClose={() => setIsNotesOpen(false)} />
         </div>
       )}
+
+        {/* About Me Panel */}
+        {aboutTab && (
+          <div className="absolute bottom-full mb-4 left-1/2 -translate-x-1/2 -z-10">
+            <AboutHelper onClose={() => setAboutTab(false)} />
+          </div>
+        )}
     </div>
   );
 };

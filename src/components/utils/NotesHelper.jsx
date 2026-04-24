@@ -1,4 +1,4 @@
-import { color } from 'motion';
+import { motion } from 'framer-motion';
 import React, { useState } from 'react'
 
 const NotesHelper = ({ onClose }) => {
@@ -94,7 +94,11 @@ const NotesHelper = ({ onClose }) => {
     };
 
     return (
-        <div className="relative left-8/10 -translate-x-6/10 bg-[#F9F5F0] w-fit h-fit rounded-lg shadow-xl flex flex-col justify-start z-40">
+        <motion.div 
+            drag
+            dragMomentum={false}
+            className="relative left-8/10 -translate-x-6/10 bg-[#F9F5F0] w-fit h-fit rounded-lg shadow-xl flex flex-col justify-start z-40 cursor-move"
+        >
             <nav className='p-2 flex items-center justify-between border-b border-gray-300'>
                 <div className='flex items-center gap-2'>
                     <div onClick={onClose} className='close-tab w-3 h-3 bg-red-400 rounded-full flex justify-center items-center cursor-pointer'><span className='opacity-0 hover:opacity-100 text-[12px]'>x</span></div>
@@ -124,7 +128,7 @@ const NotesHelper = ({ onClose }) => {
                     {renderContent()}
                 </section>
             </div>
-        </div>
+        </motion.div>
     )
 }
 
