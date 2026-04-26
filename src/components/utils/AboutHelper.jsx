@@ -6,7 +6,7 @@ import WindowWrapper from './WindowWrapper';
 const AboutHelper = ({
     onClose,
     name = "Shreekrishna Chinta",
-    position = "MERN stack powered by AI",
+    position = "MERN stack developer",
     email = "shreekrishna.chinta@example.com",
     phone = "+91 82759 02744",
     description = "I'm a frontend-focused developer with a strong interest in building clean, intuitive user interfaces.",
@@ -26,7 +26,7 @@ const AboutHelper = ({
                 <img src="/about.jpeg" alt="Profile" className="w-32 h-32 rounded-xl object-cover mb-4" />
                 <span className="flex flex-col gap-1">
                     <h1 className="text-lg border-b border-gray-400"><span className="font-bold">NAME: </span>{name}</h1>
-                    <h1 className="text-lg border-b border-gray-400"><span className="font-bold">POSITION: </span>{position}</h1>
+                    <h1 className="text-lg border-b border-gray-400"><span className="font-bold">ROLE: </span>{position}</h1>
                     <h1 className="text-lg border-b border-gray-400"><span className="font-bold">EMAIL: </span>{email}</h1>
                     <h1 className="text-lg border-b border-gray-400"><span className="font-bold">NUMBER: </span>{phone}</h1>
                 </span>

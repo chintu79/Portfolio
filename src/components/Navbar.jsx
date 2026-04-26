@@ -12,7 +12,7 @@ const Tooltip = ({ children, label }) => (
   </div>
 );
 
-const IconWrapper = ({ children, onClick, href = "#", tooltip }) => (
+const IconWrapper = ({ children, onClick, href, tooltip }) => (
   <Tooltip label={tooltip}>
     <a
       href={href}
@@ -141,12 +141,12 @@ const Navbar = () => {
           <div className="w-px h-10 bg-white" />
 
           {/* LinkedIn */}
-          <IconWrapper href="https://www.linkedin.com/in/shreekrishna-chinta" tooltip="LinkedIn">
+          <IconWrapper href="https://www.linkedin.com/in/shreekrishna-chinta/" tooltip="LinkedIn">
             <LinkedInIcon />
           </IconWrapper>
 
           {/* Instagram */}
-          <IconWrapper href="https://www.instagram.com/" tooltip="Instagram">
+          <IconWrapper href="https://www.instagram.com/_.krishnaa12/" tooltip="Instagram">
             <InstagramIcon />
           </IconWrapper>
 
@@ -156,7 +156,7 @@ const Navbar = () => {
           </IconWrapper>
 
           {/* LeetCode */}
-          <IconWrapper href="https://leetcode.com/krishna-singh-4b0a6b19a/" tooltip="LeetCode">
+          <IconWrapper href="https://leetcode.com/u/shrikrishna79/" tooltip="LeetCode">
             <LeetcodeIcon />
           </IconWrapper>
 

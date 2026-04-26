@@ -1,46 +1,38 @@
 import { motion } from 'framer-motion';
 import React, { useState } from 'react'
 
-const NotesHelper = ({ 
-  onClose,
-  title = "Notes",
-  about = `A simple, focused notes app inspired by the clarity of Apple Notes. 
-    Built to capture thoughts quickly and keep them organized without getting in the way. The goal is to reduce friction between thinking and writing, keeping the interface clean, fast, and distraction-free. 
-    Designed with an emphasis on minimalism, usability, and performance.`,
-  skills = ["Frontend Development (React, Tailwind CSS)",
+const NotesHelper = ({
+    onClose,
+    title = "Notes",
+    about = `I like building things that actually work and look good, not just writing code for the sake of it. With my background in AI and growing interest in frontend, I bring both logical thinking and attention to user experience. I’m quick to learn, comfortable experimenting, and I focus on getting things done properly. I’d contribute by building reliable, clean interfaces and improving them as I go.`,
+    skills = ["Frontend Development (React, Tailwind CSS)",
         "UI/UX Design Principles",
         "Responsive Design",
         "Component-Based Architecture",
         "State Management",
         "Performance Optimization",
         "Basic Backend Integration"],
-  experience = [
+    experience = [
         {
-            company: "Tech Company",
+            company: "MSEDCL",
+            role: "Electrical Engineer Aprentice",
+            period: "Dec 2024 - Jan 2025",
+            description: "Learnt the core and advanced concepts of electrical engineering."
+        },
+        {
+            company: "Vyoma Competition",
             role: "Frontend Developer",
-            period: "2024 - Present",
-            description: "Building modern web applications with React and TypeScript."
-        },
-        {
-            company: "Startup",
-            role: "Full Stack Developer",
-            period: "2022 - 2024",
-            description: "Developed end-to-end solutions for client projects."
-        },
-        {
-            company: "Startup",
-            role: "Full Stack Developer",
-            period: "2022 - 2024",
-            description: "Developed end-to-end solutions for client projects."
+            period: "2026",
+            description: "Designed and implemented responsive user interfaces for a FinTech project."
         }
-  ],
-  tabs = [
-        { id: 'experience', label: 'Experience', color: 'bg-blue-500'},
+    ],
+    tabs = [
+        { id: 'experience', label: 'Experience', color: 'bg-blue-500' },
         { id: 'whyme', label: 'Why me', color: 'bg-green-500' },
         { id: 'resume', label: 'Resume', color: 'bg-yellow-500', colorfalse: 'bg-red-300' }
-  ],
-  resumeUrl = "/resume.pdf",
-  quote = "The only way to do great work is to love what you do."
+    ],
+    resumeUrl = "https://docs.google.com/document/d/1oQdI6kpm1uemy2OU_bH2WBxKFRxr5Io9OQ-Z6qmEcpk/edit?usp=sharing",
+    quote = "The only way to do great work is to love what you do."
 }) => {
     const [activeTab, setActiveTab] = useState('experience');
 
@@ -95,7 +87,7 @@ const NotesHelper = ({
     };
 
     return (
-        <motion.div 
+        <motion.div
             drag
             dragMomentum={false}
             className="relative left-8/10 -translate-x-6/10 bg-[#F9F5F0] w-fit h-fit rounded-lg shadow-xl flex flex-col justify-start z-40 cursor-move"
@@ -116,8 +108,8 @@ const NotesHelper = ({
                                 key={tab.id}
                                 onClick={() => tab.id === 'resume' ? window.open(resumeUrl, '_blank') : setActiveTab(tab.id)}
                                 className={`w-full text-left px-3 py-1.5 rounded-md text-sm transition-colors ${activeTab === tab.id
-                                        ? `${tab.color} text-zinc-100 font-medium`
-                                        : `${tab.colorfalse} text-zinc-600`
+                                    ? `${tab.color} text-zinc-100 font-medium`
+                                    : `${tab.colorfalse} text-zinc-600`
                                     }`}
                             >
                                 {tab.label}
