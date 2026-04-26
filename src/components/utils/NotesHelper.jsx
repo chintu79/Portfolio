@@ -1,22 +1,20 @@
 import { motion } from 'framer-motion';
 import React, { useState } from 'react'
 
-const NotesHelper = ({ onClose }) => {
-    const [activeTab, setActiveTab] = useState('experience');
-
-    const about = `A simple, focused notes app inspired by the clarity of Apple Notes. 
+const NotesHelper = ({ 
+  onClose,
+  title = "Notes",
+  about = `A simple, focused notes app inspired by the clarity of Apple Notes. 
     Built to capture thoughts quickly and keep them organized without getting in the way. The goal is to reduce friction between thinking and writing, keeping the interface clean, fast, and distraction-free. 
-    Designed with an emphasis on minimalism, usability, and performance.`
-
-    const skills = ["Frontend Development (React, Tailwind CSS)",
+    Designed with an emphasis on minimalism, usability, and performance.`,
+  skills = ["Frontend Development (React, Tailwind CSS)",
         "UI/UX Design Principles",
         "Responsive Design",
         "Component-Based Architecture",
         "State Management",
         "Performance Optimization",
-        "Basic Backend Integration"]
-
-    const experience = [
+        "Basic Backend Integration"],
+  experience = [
         {
             company: "Tech Company",
             role: "Frontend Developer",
@@ -35,13 +33,16 @@ const NotesHelper = ({ onClose }) => {
             period: "2022 - 2024",
             description: "Developed end-to-end solutions for client projects."
         }
-    ];
-
-    const tabs = [
+  ],
+  tabs = [
         { id: 'experience', label: 'Experience', color: 'bg-blue-500'},
         { id: 'whyme', label: 'Why me', color: 'bg-green-500' },
         { id: 'resume', label: 'Resume', color: 'bg-yellow-500', colorfalse: 'bg-red-300' }
-    ];
+  ],
+  resumeUrl = "/resume.pdf",
+  quote = "The only way to do great work is to love what you do."
+}) => {
+    const [activeTab, setActiveTab] = useState('experience');
 
     const renderContent = () => {
         switch (activeTab) {
@@ -71,7 +72,7 @@ const NotesHelper = ({ onClose }) => {
                             ))}
                         </ul>
                         <h1 className='inter-bold text-lg font-bold mt-4 mb-2'>A Small Quote</h1>
-                        <p className='inter-normal text-sm opacity-80'>&ldquo;The only way to do great work is to love what you do.&rdquo;</p>
+                        <p className='inter-normal text-sm opacity-80'>&ldquo;{quote}&rdquo;</p>
                     </div>
                 );
             case 'resume':
@@ -79,7 +80,7 @@ const NotesHelper = ({ onClose }) => {
                     <div className='flex flex-col items-center justify-center h-full py-8'>
                         <p className='inter-normal text-sm opacity-70 mb-4'>View my resume</p>
                         <a
-                            href="/resume.pdf"
+                            href={resumeUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                             className='px-4 py-2 bg-zinc-800 text-white rounded-lg hover:bg-zinc-700 transition-colors inter-normal text-sm'
@@ -104,7 +105,7 @@ const NotesHelper = ({ onClose }) => {
                     <div onClick={onClose} className='close-tab w-3 h-3 bg-red-400 rounded-full flex justify-center items-center cursor-pointer'><span className='opacity-0 hover:opacity-100 text-[12px]'>x</span></div>
                     <div className='w-3 h-3 bg-yellow-400 rounded-full'></div>
                     <div className='w-3 h-3 bg-green-400 rounded-full'></div>
-                    <div className='inter-normal opacity-40'>Notes</div>
+                    <div className='inter-normal opacity-40'>{title}</div>
                 </div>
             </nav>
             <div className='flex gap-4 max-h-[26rem]'>
@@ -113,7 +114,7 @@ const NotesHelper = ({ onClose }) => {
                         {tabs.map((tab) => (
                             <button
                                 key={tab.id}
-                                onClick={() => tab.id === 'resume' ? window.open('/resume.pdf', '_blank') : setActiveTab(tab.id)}
+                                onClick={() => tab.id === 'resume' ? window.open(resumeUrl, '_blank') : setActiveTab(tab.id)}
                                 className={`w-full text-left px-3 py-1.5 rounded-md text-sm transition-colors ${activeTab === tab.id
                                         ? `${tab.color} text-zinc-100 font-medium`
                                         : `${tab.colorfalse} text-zinc-600`

@@ -1,31 +1,37 @@
 import { motion } from 'framer-motion';
-import React from 'react'
+import React from 'react';
+import GoogleMap from './GoogleMap';
+import WindowWrapper from './WindowWrapper';
 
-const AboutHelper = ({ onClose }) => {
+const AboutHelper = ({
+    onClose,
+    name = "Shreekrishna Chinta",
+    position = "MERN stack powered by AI",
+    email = "shreekrishna.chinta@example.com",
+    phone = "+91 82759 02744",
+    description = "I'm a frontend-focused developer with a strong interest in building clean, intuitive user interfaces.",
+    mapCenter = { lat: 18.566255, lng: 73.87574 },
+    mapZoom = 4,
+    mapId = "AIzaSyD7cUEhj8htSDek0QDT3yA3ig1qTumn3bw"
+}) => {
     return (
-        <motion.div
-            drag
-            dragMomentum={false}
-            className="space-grotesk-light h-140 pb-6 relative left-4/10 translate-y-1/10 -translate-x-7/10 w-full bg-[#F9F5F0] rounded-lg shadow-md overflow-y-auto cursor-move"
+        <WindowWrapper
+            onClose={onClose}
+            title="About Me"
+            positionClass="relative left-4/10 translate-y-1/10 -translate-x-7/10"
+            className="space-grotesk-light h-120 pb-6 overflow-y-auto"
         >
-            <nav className='p-2 flex items-center justify-between border-b border-gray-300'>
-                <div className='flex items-center gap-2'>
-                    <div onClick={onClose} className='close-tab w-3 h-3 bg-red-400 rounded-full flex justify-center items-center cursor-pointer'><span className='opacity-0 hover:opacity-100 text-[12px]'>x</span></div>
-                    <div className='w-3 h-3 bg-yellow-400 rounded-full'></div>
-                    <div className='w-3 h-3 bg-green-400 rounded-full'></div>
-                </div>
-            </nav>
             <h1 className="pl-6 pt-4 text-3xl inter-bold">About Me</h1>
             <section className="w-140 flex justify-items gap-4 px-6 pt-4 rounded-lg">
                 <img src="/about.jpeg" alt="Profile" className="w-32 h-32 rounded-xl object-cover mb-4" />
                 <span className="flex flex-col gap-1">
-                    <h1 className="text-lg border-b border-gray-400"><span className="font-bold">NAME: </span>Shreekrishna Chinta</h1>
-                    <h1 className="text-lg border-b border-gray-400"><span className="font-bold">POSITION: </span>MERN stack powered by AI</h1>
-                    <h1 className="text-lg border-b border-gray-400"><span className="font-bold">EMAIL: </span>shreekrishna.chinta@example.com</h1>
-                    <h1 className="text-lg border-b border-gray-400"><span className="font-bold">NUMBER: </span>+91 82759 02744</h1>
+                    <h1 className="text-lg border-b border-gray-400"><span className="font-bold">NAME: </span>{name}</h1>
+                    <h1 className="text-lg border-b border-gray-400"><span className="font-bold">POSITION: </span>{position}</h1>
+                    <h1 className="text-lg border-b border-gray-400"><span className="font-bold">EMAIL: </span>{email}</h1>
+                    <h1 className="text-lg border-b border-gray-400"><span className="font-bold">NUMBER: </span>{phone}</h1>
                 </span>
             </section>
-            <section className="inter-normal bg-rose-200 flex flex-col gap-4 px-6 py-4 mx-4 rounded-lg shadow-md">
+            <section className="inter-normal bg-rose-200 flex flex-col gap-4 px-6 py-4 mx-4 mb-4 rounded-lg shadow-md">
                 <p>
                     I’m a frontend-focused developer with a strong interest in building clean, intuitive user interfaces. I enjoy working with modern technologies like React and Tailwind CSS, focusing on creating applications that feel fast, responsive, and easy to use. My approach to development is centered around simplicity and clarity, making sure the user experience stays smooth and distraction-free.
                 </p>
@@ -36,7 +42,13 @@ const AboutHelper = ({ onClose }) => {
                     Beyond just writing code, I’m constantly refining how I think about UI/UX, performance, and component architecture. I like building projects that balance aesthetics with functionality, aiming to create interfaces that not only look good but also feel natural to use.
                 </p>
             </section>
-        </motion.div>
+            <GoogleMap
+                center={mapCenter}
+                zoom={mapZoom}
+                mapId={mapId}
+                className="mx-4 py-4 h-60"
+            />
+        </WindowWrapper>
     )
 }
 
