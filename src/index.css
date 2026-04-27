@@ -62,13 +62,3 @@ body {
   background-color: #bfb6ae;
   border-radius: 9999px;
 }
-
-.hero-container {
-  display: grid;
-  place-items: center;
-}
-
-.hero-container > * {
-  grid-column: 1;
-  grid-row: 1;
-}
