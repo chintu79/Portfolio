@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NotesHelper from './utils/NotesHelper'
 import AboutHelper from './utils/AboutHelper'
+import Shery from "sheryjs";
 
 const Tooltip = ({ children, label }) => (
   <div className="group relative flex">
@@ -22,7 +23,7 @@ const IconWrapper = ({ children, onClick, href, tooltip }) => (
           onClick();
         }
       }}
-      className="w-12 h-fit flex items-center justify-center hover:drop-shadow-xl transition duration-300 rounded-xl cursor-pointer"
+      className="magnet-target w-12 h-fit flex items-center justify-center hover:drop-shadow-xl transition duration-300 rounded-xl cursor-pointer"
     >
       {children}
     </a>
@@ -34,6 +35,30 @@ const IconWrapper = ({ children, onClick, href, tooltip }) => (
 const Navbar = () => {
   const [isNotesOpen, setIsNotesOpen] = useState(false);
   const [aboutTab, setAboutTab] = useState(false);
+
+  useEffect(() => {
+    // Check if WebGL is available
+    const canvas = document.createElement('canvas')
+    const gl = canvas.getContext('webgl') || canvas.getContext('webgl2')
+    
+    if (!gl) {
+      console.debug('WebGL is not available. Shery effects will be disabled.')
+      return
+    }
+
+    try {
+      const magnetElements = document.querySelectorAll('.magnet-target')
+      if (magnetElements.length > 0) {
+        Shery.makeMagnet(".magnet-target", {
+          ease: "cubic-bezier(0.23, 1, 0.320, 1)",
+          duration: 1,
+        })
+      }
+    } catch (error) {
+      console.debug('Shery makeMagnet failed:', error)
+    }
+  }, [])
+
   const LinkedInIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 72 72">
       <rect width="72" height="72" rx="16.2" fill="#117EB8" />

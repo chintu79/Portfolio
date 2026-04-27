@@ -1,5 +1,20 @@
-import React, { useEffect, useState } from 'react'
-import Hero from './components/Hero'
+import React, { useEffect, useState } from 'react';
+import Hero from './components/Hero';
+import Shery from "sheryjs";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import * as THREE from "three";
+
+gsap.registerPlugin(ScrollTrigger);
+
+Shery.mouseFollower({
+  //Parameters are optional.
+  skew: false,
+  ease: "cubic-bezier(0.23, 1, 0.320, 1)",
+  duration: 0.7,
+  debug: false,
+});
+
 
 const App = () => {
   const [isDesktop, setIsDesktop] = useState(true)
